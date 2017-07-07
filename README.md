@@ -16,6 +16,14 @@ services:
     failures-count: 3
     timeout: 1.5
     post: false
+
+  - name: bing
+    request-url: https://www.bing.com
+    period: 20
+    requests-count: 4
+    failures-count: 5
+    timeout: 2
+    post: false
 ```
 
 License
