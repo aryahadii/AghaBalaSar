@@ -1,0 +1,8 @@
+services:
+  - name: google
+    request-url: https://www.google.com
+    period: 10
+    failures-count: 3
+    requests-count: 5
+    timeout: 1.5
+    post: false
