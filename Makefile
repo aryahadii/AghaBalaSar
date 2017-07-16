@@ -7,7 +7,7 @@ VERSION ?= $(shell $(GIT) describe --tags ${COMMIT} 2> /dev/null || echo "$(COMM
 BUILD_TIME := $(shell LANG=en_US date +"%F_%T_%z")
 LD_FLAGS := -X $(ROOT).Version=$(VERSION) -X $(ROOT).Commit=$(COMMIT) -X $(ROOT).BuildTime=$(BUILD_TIME) -X $(ROOT).Title=aghabalasar
 
-.PHONY: help clean update-dependencies dependencies prepare_test_cassandra test docker push deploy test-docker
+.PHONY: help clean update-dependencies dependencies
 
 
 help:
@@ -28,8 +28,3 @@ dependencies:
 
 aghabalasar: *.go */*.go */*/*.go glide.lock
 	$(GO_VARS) $(GO) build -o="aghabalasar" -ldflags="$(LD_FLAGS)" $(ROOT)/cmd/aghabalasar
-
-push:
-	docker push $(DOCKER_IMAGE):$(VERSION)
-	docker push $(DOCKER_IMAGE):latest
-
