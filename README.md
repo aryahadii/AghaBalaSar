@@ -26,7 +26,7 @@ services:
     failures-count: 5
     timeout: 2
     post: false
-    webhooks:
+    webhooks: # It's not implemented yet
       - https://www.mywebsite.com/my/webhook/url
 ```
 
