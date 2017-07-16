@@ -3,6 +3,8 @@ package model
 import (
 	"io/ioutil"
 
+	"time"
+
 	"gopkg.in/yaml.v2"
 )
 
@@ -13,23 +15,20 @@ var (
 	Services ServicesListYAML
 )
 
-// Alerts is a list of typical alerting ways
-type Alerts struct {
-	Slacks   []string `yaml:"slacks"`
-	Webhooks []string `yaml:"webhooks"`
-}
-
 // Service is container of properties of services
 type Service struct {
-	Name          string `yaml:"name"`
-	Request       string `yaml:"request-url"`
-	POST          bool   `yaml:"post"`
-	Timeout       int    `yaml:"timeout"`
-	Period        int    `yaml:"period"`
-	ContentType   string `yaml:"content-type"`
-	RequestsCount int    `yaml:"requests-count"`
-	FailureCount  int    `yaml:"failures-count"`
-	AlertsList    Alerts `yaml:"alerts"`
+	Name               string   `yaml:"name"`
+	Request            string   `yaml:"request-url"`
+	POST               bool     `yaml:"post"`
+	Timeout            int      `yaml:"timeout"`
+	Period             int      `yaml:"period"`
+	ContentType        string   `yaml:"content-type"`
+	RequestsCount      int      `yaml:"requests-count"`
+	FailureCount       int      `yaml:"failures-count"`
+	Slacks             []string `yaml:"slacks"`
+	Webhooks           []string `yaml:"webhooks"`
+	LastRequestsResult []bool
+	LastAlert          time.Time
 }
 
 // ServicesListYAML contains array of services

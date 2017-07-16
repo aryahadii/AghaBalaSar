@@ -5,8 +5,8 @@ import (
 
 	"net/http"
 
+	"github.com/aryahadii/AghaBalaSar/alerting"
 	"github.com/aryahadii/AghaBalaSar/configuration"
-	"github.com/aryahadii/AghaBalaSar/health"
 	"github.com/aryahadii/AghaBalaSar/model"
 	"github.com/aryahadii/AghaBalaSar/view"
 	"github.com/spf13/cobra"
@@ -30,7 +30,7 @@ func serve(cmd *cobra.Command, args []string) {
 		log.WithError(err).Fatal("Can't load services")
 	}
 
-	go health.StartScheduler()
+	go alerting.StartScheduler()
 
 	http.HandleFunc("/", view.ServicesHealth)
 	http.HandleFunc("/healthz", view.Healthz)
