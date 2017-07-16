@@ -16,6 +16,8 @@ services:
     failures-count: 3
     timeout: 1.5
     post: false
+    slacks:
+      - https://hooks.slack.com/services/blablabla
 
   - name: bing
     request-url: https://www.bing.com
@@ -24,6 +26,8 @@ services:
     failures-count: 5
     timeout: 2
     post: false
+    webhooks:
+      - https://www.mywebsite.com/my/webhook/url
 ```
 
 License
