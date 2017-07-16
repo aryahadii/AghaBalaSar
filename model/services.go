@@ -13,6 +13,12 @@ var (
 	Services ServicesListYAML
 )
 
+// Alerts is a list of typical alerting ways
+type Alerts struct {
+	Slacks   []string `yaml:"slacks"`
+	Webhooks []string `yaml:"webhooks"`
+}
+
 // Service is container of properties of services
 type Service struct {
 	Name          string `yaml:"name"`
@@ -23,6 +29,7 @@ type Service struct {
 	ContentType   string `yaml:"content-type"`
 	RequestsCount int    `yaml:"requests-count"`
 	FailureCount  int    `yaml:"failures-count"`
+	AlertsList    Alerts `yaml:"alerts"`
 }
 
 // ServicesListYAML contains array of services
