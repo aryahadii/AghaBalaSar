@@ -1,6 +1,5 @@
 services:  
   - name: google
-    request:
     request-url: https://www.google.com
     period: 5
     failures-count: 2
